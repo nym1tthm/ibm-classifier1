@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .info-section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .info-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "07084143-01b0-4a37-a6dc-f6e3adfec483", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "a749c05a-a5dc-45d6-a5c1-7dd102909f99", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Water Conservation Hub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#techniques">Conservation Techniques</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#sanitation">Sanitation Measures</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#practices">Best Practices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container content" id="home">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Water Conservation Hub</h1>
+        <p class="lead">Your one-stop resource for all things related to water conservation, sanitation measures, and best practices for maintaining clean water.</p>
+        <img src="{{ url_for('static', filename='images/water_conservation.jpg')}}" alt="Water Conservation" class="img-fluid">
+    </div>
+</div>
+
+<div class="container content" id="techniques">
+    <h2>Water Conservation Techniques</h2>
+    <div class="info-section">
+        <div class="row">
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/rainwater_harvesting.jpg')}}" alt="Rainwater Harvesting">
+                <h4>Rainwater Harvesting</h4>
+                <p>Collect and store rainwater for reuse, reducing the demand on groundwater.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#rainwaterModal">Learn More</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/greywater_reuse.jpg')}}" alt="Greywater Reuse">
+                <h4>Greywater Reuse</h4>
+                <p>Reuse water from sinks, showers, and laundry for irrigation and flushing toilets.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#greywaterModal">Learn More</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/drip_irrigation.jpg')}}" alt="Drip Irrigation">
+                <h4>Drip Irrigation</h4>
+                <p>Efficient irrigation method that conserves water by delivering it directly to the plant roots.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#dripModal">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals for Water Conservation Techniques -->
+<div class="modal fade" id="rainwaterModal" tabindex="-1" role="dialog" aria-labelledby="rainwaterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rainwaterModalLabel">Rainwater Harvesting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/rainwater_harvesting.jpg')}}" alt="Rainwater Harvesting">
+                <p>Rainwater harvesting involves collecting and storing rainwater for future use. This technique helps in replenishing groundwater levels and reducing dependency on municipal water supplies.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="greywaterModal" tabindex="-1" role="dialog" aria-labelledby="greywaterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="greywaterModalLabel">Greywater Reuse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/greywater_reuse.jpg')}}" alt="Greywater Reuse">
+                <p>Greywater reuse involves recycling water from showers, sinks, and laundry for non-potable uses such as irrigation and toilet flushing.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="dripModal" tabindex="-1" role="dialog" aria-labelledby="dripModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dripModalLabel">Drip Irrigation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/drip_irrigation.jpg')}}" alt="Drip Irrigation">
+                <p>Drip irrigation is a water-efficient method that delivers water directly to the roots of plants, reducing water waste and promoting healthier plant growth.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container content" id="sanitation">
+    <h2>Sanitation Measures</h2>
+    <div class="info-section">
+        <div class="row">
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/clean_toilets.jpg')}}" alt="Clean Toilets">
+                <h4>Clean Toilets</h4>
+                <p>Ensure access to clean and hygienic toilet facilities to prevent contamination of water sources.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#cleanToiletsModal">Learn More</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/sewage_treatment.jpg')}}" alt="Sewage Treatment">
+                <h4>Sewage Treatment</h4>
+                <p>Treat sewage water before releasing it into water bodies to avoid pollution.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#sewageModal">Learn More</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/hand_washing.jpg')}}" alt="Hand Washing')}}">
+                <h4>Proper Hand Washing</h4>
+                <p>Promote proper hand washing techniques to maintain personal hygiene and prevent the spread of diseases.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#handWashingModal">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cleanToiletsModal" tabindex="-1" role="dialog" aria-labelledby="cleanToiletsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cleanToiletsModalLabel">Clean Toilets</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/clean_toilets.jpg')}}" alt="Clean Toilets">
+                <p>Providing access to clean and hygienic toilets is essential to prevent the contamination of water sources and to ensure the health and well-being of communities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Sewage Treatment -->
+<div class="modal fade" id="sewageModal" tabindex="-1" role="dialog" aria-labelledby="sewageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sewageModalLabel">Sewage Treatment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/sewage_treatment.jpg')}}" alt="Sewage Treatment">
+                <p>Sewage treatment is the process of removing contaminants from wastewater, primarily from household sewage. It includes physical, chemical, and biological processes to remove pollutants and produce environmentally safe treated wastewater.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="handWashingModal" tabindex="-1" role="dialog" aria-labelledby="handWashingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="handWashingModalLabel">Proper Hand Washing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/hand_washing.jpg')}}" alt="Proper Hand Washing">
+                <p>Proper hand washing is a critical hygiene practice to prevent the spread of diseases. It involves washing hands with soap and water for at least 20 seconds, ensuring all parts of the hands are cleaned.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container content" id="practices">
+    <h2>Best Practices</h2>
+    <div class="info-section">
+        <div class="row">
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/water_testing.jpg') }}" alt="Regular Water Testing">
+                <h4>Regular Water Testing</h4>
+                <p>Conduct regular testing of water quality to ensure its safety and potability.</p>
+                <button class="btn btn-primary" id="waterTestingButton">Check Potability</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/protecting_sources.jpg')}}" alt="Protect Water Sources">
+                <h4>Protect Water Sources</h4>
+                <p>Implement measures to protect water sources from contamination and overuse.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#protectSourcesModal">Learn More</button>
+            </div>
+            <div class="col-md-4 info-item">
+                <img src="{{ url_for('static', filename='images/education_awareness.jpg')}}" alt="Education and Awareness">
+                <h4>Education and Awareness</h4>
+                <p>Educate communities about water conservation and sanitation practices to promote sustainable water management.</p>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#educationAwarenessModal">Learn More</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    
+    <form id="waterPredictionForm" style="display: none;" action="/predict" method="post">
+        <label for="ph">pH</label>
+        <input type="text" id="ph" name="ph" required>
+        <label for="hardness">Hardness</label>
+        <input type="text" id="hardness" name="hardness" required>
+        <label for="solids">Solids</label>
+        <input type="text" id="solids" name="solids" required>
+        <label for="chloramines">Chloramines</label>
+        <input type="text" id="chloramines" name="chloramines" required>
+        <label for="sulfate">Sulfate</label>
+        <input type="text" id="sulfate" name="sulfate" required>
+        <label for="conductivity">Conductivity</label>
+        <input type="text" id="conductivity" name="conductivity" required>
+        <label for="organic_carbon">Organic Carbon</label>
+        <input type="text" id="organic_carbon" name="organic_carbon" required>
+        <label for="trihalomethanes">Trihalomethanes</label>
+        <input type="text" id="trihalomethanes" name="trihalomethanes" required>
+        <label for="turbidity">Turbidity</label>
+        <input type="text" id="turbidity" name="turbidity" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</div>
+<script>
+    document.getElementById('waterTestingButton').addEventListener('click', function() {
+        var form = document.getElementById('waterPredictionForm');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
+</script>
+
+<div class="modal fade" id="protectSourcesModal" tabindex="-1" role="dialog" aria-labelledby="protectSourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="protectSourcesModalLabel">Protect Water Sources</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/protecting_sources.jpg')}}" alt="Protect Water Sources">
+                <p>Implementing measures to protect water sources from contamination and overuse is crucial for maintaining the quality and availability of water.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="educationAwarenessModal" tabindex="-1" role="dialog" aria-labelledby="educationAwarenessModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="educationAwarenessModalLabel">Education and Awareness</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ url_for('static', filename='images/education_awareness.jpg')}}" alt="Education and Awareness">
+                <p>Educating communities about water conservation and sanitation practices promotes sustainable water management and helps preserve water resources.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container content" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="info-section">
+        <div class="accordion" id="faqAccordion">
+            <div class="card">
+                <div class="card-header" id="faqHeading1">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                            What is water conservation?
+                        </button>
+                    </h2>
+                </div>
+                <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Water conservation refers to the practice of using water efficiently to reduce unnecessary water usage.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="faqHeading2">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            How can I conserve water at home?
+                        </button>
+                    </h2>
+                </div>
+                <div id="faqCollapse2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        You can conserve water at home by fixing leaks, using water-efficient fixtures, and reducing water usage in daily activities.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="faqHeading3">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                            What are the benefits of rainwater harvesting?
+                        </button>
+                    </h2>
+                </div>
+                <div id="faqCollapse3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Rainwater harvesting helps reduce dependence on groundwater, lowers water bills, and provides an alternative water source during droughts.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container content" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-section">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="contactButton">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+</html>
