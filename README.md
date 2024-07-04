@@ -1,0 +1,1 @@
+project implemented using flask to develop a water conservation website integrated with ibm watson assistant chatbot and an additional option to check water potability of water using xgboost classifier . run app.py in terminal for site link.
